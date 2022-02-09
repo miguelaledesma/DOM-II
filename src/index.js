@@ -37,11 +37,12 @@ document.body.addEventListener('dblclick', evt => {
     evt.target.innerHTML = ''
 } )
 
-//mouse move
+//mousemove
 
 document.body.addEventListener('mousemove', evt => {
     const {clientX, clientY } = evt 
     console.log(`mouse is at ${clientX} and ${clientY}`)
+    evt.stopPropagation()
 })
 
 //mouseenter and mouseleave
@@ -65,7 +66,7 @@ let scale = 1;
         event.preventDefault();
         if (event.deltaY < 0) {
           scale *= event.deltaY * -2;
-        }
+        } 
         else {
           scale /= event.deltaY * 2;
         }
@@ -73,9 +74,16 @@ let scale = 1;
         zoomStyle.style.transform = `scale(${scale})`;
       }
       
-    let button = document.querySelectorAll('.btn'); 
+
+      
+
+    const button = document.querySelectorAll('.btn'); 
       for(let btn of button){
         btn.addEventListener('click', (event) => {
             alert('You Clicked the Button!')
           })
       }
+
+
+      
+     
